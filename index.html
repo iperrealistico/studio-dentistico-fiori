@@ -26,8 +26,8 @@
     <meta name="twitter:description" content="65 anni di esperienza odontoiatrica. Implantologia, posturologia, agopuntura. ☎️ 0583 62707">
     <meta name="twitter:image" content="images/studio-dentistico-fiori-preview.jpg">
     
-    <!-- Favicon SVG inline -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230066cc'/><path d='M50 15c-8 0-15 5-15 15 0 25-5 35-5 40 0 8 9 15 20 15s20-7 20-15c0-5-5-15-5-40 0-10-7-15-15-15z' fill='white'/><path d='M50 25c-3 0-6 2-6 6v15c0 3 3 6 6 6s6-3 6-6V31c0-4-3-6-6-6z' fill='%230066cc'/></svg>">
+    <!-- Favicon SVG inline - Dente stilizzato con shading realistico -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='toothGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%230066cc;stop-opacity:1'/><stop offset='100%25' style='stop-color:%2300a8e6;stop-opacity:1'/></linearGradient><radialGradient id='shine' cx='30%25' cy='30%25' r='50%25'><stop offset='0%25' style='stop-color:%23ffffff;stop-opacity:0.8'/><stop offset='100%25' style='stop-color:%23ffffff;stop-opacity:0'/></radialGradient></defs><rect width='100' height='100' rx='20' fill='url(%23toothGrad)'/><path d='M50 15c-10 0-18 8-18 18 0 5-2 10-2 20 0 15 0 22 8 27 5 3 12 5 12 5s7-2 12-5c8-5 8-12 8-27 0-10-2-15-2-20 0-10-8-18-18-18z' fill='white'/><path d='M50 15c-10 0-18 8-18 18 0 5-2 10-2 20 0 15 0 22 8 27 5 3 12 5 12 5s7-2 12-5c8-5 8-12 8-27 0-10-2-15-2-20 0-10-8-18-18-18z' fill='url(%23shine)' opacity='0.5'/><path d='M45 35c0-3 2-5 5-5s5 2 5 5v10c0 3-2 5-5 5s-5-2-5-5V35z' fill='%230066cc' opacity='0.3'/></svg>">
     
     <!-- 
     ========================================
@@ -171,8 +171,8 @@
         }
         
         .logo-icon {
-            width: 24px;
-            height: 24px;
+            width: 32px;
+            height: 32px;
         }
         
         .nav-menu {
@@ -242,7 +242,7 @@
             20%, 40% { transform: rotate(10deg); }
         }
         
-        /* Hero Section - FIXED */
+        /* Hero Section - UPDATED */
         .hero {
             margin-top: 70px;
             position: relative;
@@ -274,29 +274,35 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(0,102,204,0.8), rgba(0,168,230,0.7));
+            background: rgba(0,0,0,0); /* Overlay rimosso come richiesto */
             z-index: -1;
         }
         
         .hero-content {
             position: relative;
             z-index: 1;
-            color: white;
-            text-align: center;
+            color: var(--text-color);
             animation: fadeInUp 1s ease-out;
+            margin-left: auto; /* Allinea a destra */
+            max-width: 600px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
         
         .hero h1 {
-            color: white;
+            color: var(--primary-color);
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: none;
         }
         
         .hero-subtitle {
             font-size: clamp(1.25rem, 3vw, 2rem);
             margin-bottom: 2rem;
             opacity: 0.95;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            color: var(--text-color);
         }
         
         .hero-cta {
@@ -351,6 +357,11 @@
         
         section:nth-child(even) {
             background: var(--light-gray);
+        }
+
+        /* Centrare titoli specifici */
+        #team h2, #tecnologia h2, #dove-siamo h2 {
+            text-align: center;
         }
         
         /* Specializations Grid */
@@ -667,6 +678,17 @@
                 min-height: 70vh;
             }
             
+            /* Mobile hero adjustments */
+            .hero-bg img {
+                object-position: left center; /* Allinea a sinistra per mantenere i volti */
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+                background: rgba(255, 255, 255, 0.9);
+                max-width: 90%;
+            }
+            
             section {
                 padding: 3rem 0;
             }
@@ -702,8 +724,8 @@
             }
             
             .logo-icon {
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
             }
         }
         
@@ -793,9 +815,20 @@
             <div class="nav-container">
                 <div class="logo">
                     <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100" height="100" rx="20" fill="#0066cc"/>
-                        <path d="M50 15c-8 0-15 5-15 15 0 25-5 35-5 40 0 8 9 15 20 15s20-7 20-15c0-5-5-15-5-40 0-10-7-15-15-15z" fill="white"/>
-                        <path d="M50 25c-3 0-6 2-6 6v15c0 3 3 6 6 6s6-3 6-6V31c0-4-3-6-6-6z" fill="#0066cc"/>
+                        <defs>
+                            <linearGradient id="toothGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#0066cc;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#00a8e6;stop-opacity:1" />
+                            </linearGradient>
+                            <radialGradient id="shine" cx="30%" cy="30%" r="50%">
+                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+                            </radialGradient>
+                        </defs>
+                        <rect width="100" height="100" rx="20" fill="url(#toothGrad)"/>
+                        <path d="M50 15c-10 0-18 8-18 18 0 5-2 10-2 20 0 15 0 22 8 27 5 3 12 5 12 5s7-2 12-5c8-5 8-12 8-27 0-10-2-15-2-20 0-10-8-18-18-18z" fill="white"/>
+                        <path d="M50 15c-10 0-18 8-18 18 0 5-2 10-2 20 0 15 0 22 8 27 5 3 12 5 12 5s7-2 12-5c8-5 8-12 8-27 0-10-2-15-2-20 0-10-8-18-18-18z" fill="url(#shine)" opacity="0.5"/>
+                        <path d="M45 35c0-3 2-5 5-5s5 2 5 5v10c0 3-2 5-5 5s-5-2-5-5V35z" fill="#0066cc" opacity="0.3"/>
                     </svg>
                     Studio Dentistico Fiori
                 </div>
@@ -855,7 +888,7 @@
                     </div>
                     <div class="spec-content">
                         <h3>Implantologia</h3>
-                        <p>Trent'anni di esperienza in implantologia avanzata con tecniche all'avanguardia per risultati duraturi e naturali.</p>
+                        <p>Lo Studio Dentistico Fiori di Castelnuovo di Garfagnana vanta oltre trent'anni di esperienza in implantologia avanzata. Utilizziamo tecniche all'avanguardia per garantire risultati duraturi e naturali, con impianti di ultima generazione che si integrano perfettamente con l'osso mascellare. Il nostro approccio minimamente invasivo riduce i tempi di recupero e garantisce il massimo comfort durante e dopo l'intervento.</p>
                         <ul class="spec-features">
                             <li>Short Implants brevettati NASA per osso ridotto</li>
                             <li>Carico immediato in 24 ore</li>
@@ -872,7 +905,7 @@
                     </div>
                     <div class="spec-content">
                         <h3>Posturologia</h3>
-                        <p>30 anni di esperienza nell'analisi e correzione degli squilibri posturali correlati alla masticazione.</p>
+                        <p>Con 30 anni di esperienza nell'analisi e correzione degli squilibri posturali correlati alla masticazione, il nostro studio dentistico a Castelnuovo di Garfagnana è leader in Garfagnana nella posturologia odontoiatrica. Trattiamo con successo problemi di mal di schiena, cervicalgia e cefalea derivanti da malocclusioni dentali, utilizzando tecnologie avanzate per diagnosi precise e terapie personalizzate.</p>
                         <ul class="spec-features">
                             <li>Analisi stabilometrica computerizzata</li>
                             <li>Bite personalizzati per sportivi</li>
@@ -889,7 +922,7 @@
                     </div>
                     <div class="spec-content">
                         <h3>Agopuntura Medica</h3>
-                        <p>Trattamenti di agopuntura medica certificata con formazione triennale e tirocinio ospedaliero.</p>
+                        <p>Siamo uno dei pochi studi dentistici in provincia di Lucca ad offrire trattamenti di agopuntura medica certificata. La Dott.ssa Bonini ha completato una formazione triennale con tirocinio ospedaliero, garantendo trattamenti sicuri ed efficaci per dolori cronici, ansia e stress. L'agopuntura si integra perfettamente con le cure odontoiatriche per un approccio olistico alla salute.</p>
                         <ul class="spec-features">
                             <li>Riconosciuta da OMS con 20.000+ studi</li>
                             <li>Trattamento mal di testa e dolori articolari</li>
@@ -906,7 +939,7 @@
                     </div>
                     <div class="spec-content">
                         <h3>Sedazione Cosciente</h3>
-                        <p>Trattamenti senza ansia né dolore grazie alla sedazione con protossido d'azoto, adatta a tutte le età.</p>
+                        <p>Il nostro studio dentistico a Castelnuovo di Garfagnana è specializzato in sedazione cosciente con protossido d'azoto, ideale per pazienti ansiosi, bambini e persone con riflesso del vomito accentuato. Questa tecnica sicura e non invasiva permette di affrontare le cure dentali in totale serenità, mantenendo il paziente rilassato ma vigile durante tutto il trattamento.</p>
                         <ul class="spec-features">
                             <li>Miscela ossigeno e protossido d'azoto</li>
                             <li>Paziente rilassato ma vigile</li>
@@ -923,7 +956,7 @@
                     </div>
                     <div class="spec-content">
                         <h3>Terapia Kyminasi Diet</h3>
-                        <p>Una delle sole 61 piattaforme autorizzate in Italia per questa innovativa terapia metabolica.</p>
+                        <p>Lo Studio Dentistico Fiori è una delle sole 61 piattaforme autorizzate in Italia per la terapia Kyminasi Diet. Questo innovativo approccio metabolico, guidato dalla Dott.ssa Bonini, combina una dieta equilibrata personalizzata con un dispositivo medico brevettato per riprogrammare il metabolismo, garantendo una perdita di peso rapida, duratura e salutare.</p>
                         <ul class="spec-features">
                             <li>Riprogrammazione del metabolismo</li>
                             <li>Dieta equilibrata personalizzata</li>
@@ -940,6 +973,9 @@
     <section id="servizi">
         <div class="container">
             <h2>Servizi Odontoiatrici Completi</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+                Il nostro studio dentistico a Castelnuovo di Garfagnana offre una gamma completa di servizi odontoiatrici, dalle cure conservative alla chirurgia implantare avanzata. Ogni trattamento viene eseguito con tecnologie all'avanguardia e materiali di prima qualità, garantendo risultati eccellenti e duraturi per tutti i pazienti della Garfagnana e della provincia di Lucca.
+            </p>
             <div class="services-grid">
                 <div class="service-item">
                     <div class="service-icon">
@@ -948,7 +984,7 @@
                         </svg>
                     </div>
                     <h4>Conservativa Indolore</h4>
-                    <p>Otturazioni estetiche con tecniche mini-invasive</p>
+                    <p>Otturazioni estetiche con tecniche mini-invasive e materiali biocompatibili di ultima generazione</p>
                 </div>
                 
                 <div class="service-item">
@@ -958,7 +994,7 @@
                         </svg>
                     </div>
                     <h4>Parodontologia</h4>
-                    <p>Cura delle gengive con tecniche rigenerative</p>
+                    <p>Cura delle gengive con tecniche rigenerative e laser terapia per parodontiti anche avanzate</p>
                 </div>
                 
                 <div class="service-item">
@@ -968,7 +1004,7 @@
                         </svg>
                     </div>
                     <h4>Ortodonzia</h4>
-                    <p>Apparecchi tradizionali e invisibili per tutte le età</p>
+                    <p>Apparecchi tradizionali e invisibili per tutte le età, con piani di trattamento personalizzati</p>
                 </div>
                 
                 <div class="service-item">
@@ -978,7 +1014,7 @@
                         </svg>
                     </div>
                     <h4>Pedodonzia</h4>
-                    <p>Cure dentali specializzate per bambini</p>
+                    <p>Cure dentali specializzate per bambini in ambiente ludico e con sedazione cosciente</p>
                 </div>
                 
                 <div class="service-item">
@@ -988,7 +1024,7 @@
                         </svg>
                     </div>
                     <h4>Igiene Professionale</h4>
-                    <p>Pulizia profonda con ultrasuoni bioattivi</p>
+                    <p>Pulizia profonda con ultrasuoni bioattivi e air-flow per rimuovere placca e macchie</p>
                 </div>
                 
                 <div class="service-item">
@@ -998,7 +1034,7 @@
                         </svg>
                     </div>
                     <h4>Protesi Metal-Free</h4>
-                    <p>Protesi di nuova generazione senza metalli</p>
+                    <p>Protesi di nuova generazione senza metalli in ceramica integrale e zirconia</p>
                 </div>
                 
                 <div class="service-item">
@@ -1008,7 +1044,7 @@
                         </svg>
                     </div>
                     <h4>Endodonzia Laser</h4>
-                    <p>Devitalizzazioni precise con tecnologia laser</p>
+                    <p>Devitalizzazioni precise con tecnologia laser per maggior successo terapeutico</p>
                 </div>
                 
                 <div class="service-item">
@@ -1018,7 +1054,7 @@
                         </svg>
                     </div>
                     <h4>Estetica Dentale</h4>
-                    <p>Sbiancamento laser e faccette estetiche</p>
+                    <p>Sbiancamento laser professionale e faccette estetiche per un sorriso perfetto</p>
                 </div>
             </div>
         </div>
@@ -1028,6 +1064,9 @@
     <section id="team">
         <div class="container">
             <h2>Il Nostro Team</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+                Lo Studio Dentistico Fiori di Castelnuovo di Garfagnana è guidato da due professionisti con oltre 30 anni di esperienza ciascuno. Il nostro team multidisciplinare garantisce cure complete e personalizzate per ogni paziente, combinando competenze specialistiche in implantologia, posturologia, agopuntura medica e odontoiatria generale.
+            </p>
             <div class="team-grid">
                 <div class="team-member">
                     <div class="team-photo">
@@ -1065,27 +1104,31 @@
         <div class="container">
             <h2>Tecnologia ed Etica</h2>
             <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">
-                Aggiornamento clinico continuo dal 1960 per offrire sempre il meglio ai nostri pazienti
+                Dal 1960 lo Studio Dentistico Fiori di Castelnuovo di Garfagnana mantiene un impegno costante nell'aggiornamento clinico e tecnologico per offrire sempre il meglio ai propri pazienti. La nostra filosofia si basa su trasparenza, etica professionale e utilizzo di tecnologie all'avanguardia per garantire trattamenti minimamente invasivi, indolori e di massima qualità per tutti i pazienti della Garfagnana e delle zone limitrofe.
             </p>
             
             <div class="tech-grid">
                 <div class="tech-box">
                     <h3>Strumentazione Avanzata</h3>
                     <ul class="spec-features">
-                        <li>Laser a diodi ed Erbium per precisione</li>
-                        <li>Chirurgia piezoelettrica ultrasonica</li>
-                        <li>Colla di fibrina per guarigione rapida</li>
-                        <li>Sedazione con protossido d'azoto</li>
+                        <li>Laser a diodi ed Erbium per precisione chirurgica</li>
+                        <li>Chirurgia piezoelettrica ultrasonica atraumatica</li>
+                        <li>Colla di fibrina per guarigione rapida naturale</li>
+                        <li>Sedazione con protossido d'azoto computerizzata</li>
+                        <li>Radiografia digitale a basso dosaggio</li>
+                        <li>Scanner intraorale 3D per impronte digitali</li>
                     </ul>
                 </div>
                 
                 <div class="tech-box">
                     <h3>La Nostra Filosofia</h3>
                     <ul class="spec-features">
-                        <li>Approccio minimamente invasivo</li>
-                        <li>Trattamenti indolori e conservativi</li>
-                        <li>Trasparenza su costi e piani di cura</li>
-                        <li>Pagamenti rateali a tasso zero</li>
+                        <li>Approccio minimamente invasivo e conservativo</li>
+                        <li>Trattamenti indolori con tecniche moderne</li>
+                        <li>Trasparenza totale su costi e piani di cura</li>
+                        <li>Pagamenti rateali personalizzati a tasso zero</li>
+                        <li>Protocolli di sterilizzazione ospedalieri</li>
+                        <li>Formazione continua del personale</li>
                     </ul>
                 </div>
             </div>
@@ -1136,7 +1179,9 @@
             <div style="margin-top: 2rem; text-align: center;">
                 <p style="font-size: 1.1rem;">
                     <strong>Studio privo di barriere architettoniche</strong><br>
-                    Parcheggio disponibile davanti alle piscine comunali
+                    Lo Studio Dentistico Fiori è completamente accessibile a persone con mobilità ridotta, dotato di ascensore e servizi dedicati. 
+                    Ampio parcheggio gratuito disponibile davanti alle piscine comunali di Castelnuovo di Garfagnana, a soli 50 metri dallo studio. 
+                    La nostra posizione centrale permette un facile accesso da tutta la Garfagnana e dalla provincia di Lucca.
                 </p>
             </div>
         </div>
@@ -1147,7 +1192,13 @@
         <div class="container">
             <h2>Dove Siamo</h2>
             <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">
-                Via Valmaira 4, 55032 Castelnuovo di Garfagnana (LU)
+                Lo Studio Dentistico Fiori si trova in Via Valmaira 4, nel cuore di Castelnuovo di Garfagnana (LU), 
+                capitale storica della Garfagnana. La nostra posizione strategica al centro della valle permette di 
+                servire comodamente pazienti provenienti da tutta la Garfagnana, dalla Media Valle del Serchio e dalla 
+                provincia di Lucca. Facilmente raggiungibile da Lucca in soli 45 minuti percorrendo la SS12 dell'Abetone 
+                e del Brennero, lo studio è situato in zona centrale con ampi parcheggi nelle vicinanze. Serviamo 
+                regolarmente pazienti da Barga, Gallicano, Pieve Fosciana, Piazza al Serchio, San Romano, Villa Collemandina, 
+                Camporgiano e tutti i comuni della Garfagnana.
             </p>
             
             <div class="map-container">
@@ -1170,7 +1221,7 @@
             <h2>Contattaci</h2>
             <div class="contact-info">
                 <h3>Prenota la tua visita</h3>
-                <p>Il nostro team è a tua disposizione per fornirti tutte le informazioni necessarie</p>
+                <p>Il nostro team è a tua disposizione per fornirti tutte le informazioni necessarie e prenotare la tua prima visita senza impegno</p>
                 <div class="contact-number">☎️ 0583 62707</div>
                 <a href="tel:0583627070" class="contact-cta">
                     <svg viewBox="0 0 24 24" fill="currentColor" style="width: 30px; height: 30px;">
@@ -1187,6 +1238,7 @@
         <div class="container">
             <p>&copy; 2024 Studio Dentistico Fiori - Tutti i diritti riservati</p>
             <p>P.IVA: 01234567890 | Via Valmaira 4, 55032 Castelnuovo di Garfagnana (LU)</p>
+            <p style="margin-top: 1rem;">Realizzato with ❤️ da <a href="https://www.garfagnanafoto.it" style="color: #40c4ff; text-decoration: none;">Garfagnanafoto.it</a></p>
         </div>
     </footer>
     
