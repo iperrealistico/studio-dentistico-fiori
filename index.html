@@ -40,27 +40,38 @@
     ELENCO IMMAGINI NECESSARIE:
     ========================================
     
-    1. hero-studio-dentistico.jpg - Foto principale dello studio (1920x800)
-    2. sala-chirurgica-implantologia.jpg - Sala chirurgica in azione (800x600)
-    3. valutazione-postura-atleta.jpg - Analisi posturale (800x600)
-    4. agopuntura-medica.jpg - Ago su punto terapeutico (800x600)
-    5. sedazione-cosciente-bambino.jpg - Mascherina su paziente pediatrico (800x600)
-    6. terapia-kyminasi-risultati.jpg - Prima e dopo paziente (800x600)
-    7. paziente-sorridente.jpg - Paziente post-trattamento (800x600)
-    8. dott-enrico-fiori.jpg - Ritratto professionale (400x400)
-    9. dott-daniela-bonini.jpg - Ritratto professionale (400x400)
-    10. tecnologia-laser.jpg - Setup laser in sala (800x600)
-    11. ingresso-studio.jpg - Ingresso senza barriere (800x600)
-    12. facciata-studio.jpg - Esterno dello studio (800x600)
+    NOTA: Le immagini possono essere di qualsiasi dimensione/aspect ratio.
+    Il sistema le adatterà automaticamente senza distorsioni.
+    
+    1. hero-studio-dentistico.jpg - Foto principale dello studio (consigliata almeno 1920px larghezza)
+    2. sala-chirurgica-implantologia.jpg - Sala chirurgica in azione
+    3. valutazione-postura-atleta.jpg - Analisi posturale
+    4. agopuntura-medica.jpg - Ago su punto terapeutico
+    5. sedazione-cosciente-bambino.jpg - Mascherina su paziente pediatrico
+    6. terapia-kyminasi-risultati.jpg - Prima e dopo paziente
+    7. paziente-sorridente.jpg - Paziente post-trattamento
+    8. dott-enrico-fiori.jpg - Ritratto professionale
+    9. dott-daniela-bonini.jpg - Ritratto professionale
+    10. tecnologia-laser.jpg - Setup laser in sala
+    11. ingresso-studio.jpg - Ingresso senza barriere
+    12. facciata-studio.jpg - Esterno dello studio
     13. studio-dentistico-fiori-preview.jpg - Immagine per social (1200x630)
     
-    FAVICON FILES:
+    STRUTTURA CARTELLE:
+    - Creare una cartella "images" nella stessa directory del file HTML
+    - Inserire tutte le immagini dentro la cartella "images"
+    
+    FAVICON FILES (nella root):
     - favicon.ico
     - favicon-16x16.png
     - favicon-32x32.png
     - apple-touch-icon.png (180x180)
     - safari-pinned-tab.svg
     - site.webmanifest
+    
+    Per testare senza immagini, usa questi placeholder:
+    - https://via.placeholder.com/1920x800/0066cc/ffffff?text=Studio+Dentistico+Fiori
+    - https://via.placeholder.com/800x600/e3f2fd/0066cc?text=Specializzazione
     
     ========================================
     -->
@@ -95,6 +106,25 @@
             line-height: 1.6;
             color: var(--text-color);
             overflow-x: hidden;
+        }
+        
+        /* Utility class per immagini responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .img-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .img-contain {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         
         .container {
@@ -226,7 +256,7 @@
             20%, 40% { transform: rotate(10deg); }
         }
         
-        /* Hero Section */
+        /* Hero Section - AGGIORNATO */
         .hero {
             margin-top: 70px;
             position: relative;
@@ -234,6 +264,7 @@
             display: flex;
             align-items: center;
             overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         }
         
         .hero-bg {
@@ -242,17 +273,33 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0;
+            overflow: hidden;
         }
         
         .hero-bg img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.4);
+            object-position: center;
+            opacity: 0.3;
+        }
+        
+        /* Fallback se l'immagine non carica */
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,102,204,0.8), rgba(0,168,230,0.8));
+            z-index: 1;
         }
         
         .hero-content {
+            position: relative;
+            z-index: 2;
             color: white;
             text-align: center;
             animation: fadeInUp 1s ease-out;
@@ -261,12 +308,14 @@
         .hero h1 {
             color: white;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .hero-subtitle {
             font-size: clamp(1.25rem, 3vw, 2rem);
             margin-bottom: 2rem;
-            opacity: 0.9;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
         
         .hero-cta {
@@ -339,10 +388,24 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
         
-        .spec-card img {
+        /* Container per immagini card con aspect ratio fisso */
+        .spec-card-img {
             width: 100%;
             height: 250px;
+            overflow: hidden;
+            background: var(--light-gray);
+        }
+        
+        .spec-card-img img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .spec-card:hover .spec-card-img img {
+            transform: scale(1.05);
         }
         
         .spec-content {
@@ -425,12 +488,14 @@
             margin: 0 auto 1.5rem;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background: var(--light-gray);
         }
         
         .team-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
             transition: var(--transition);
         }
         
@@ -471,6 +536,21 @@
             padding: 2rem;
             border-radius: 10px;
             box-shadow: var(--shadow);
+        }
+        
+        /* Image containers generici */
+        .image-container {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background: var(--light-gray);
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
         /* Schedule Table */
@@ -515,6 +595,7 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             height: 400px;
+            background: var(--light-gray);
         }
         
         /* Contact Section */
@@ -627,6 +708,26 @@
         img.loaded {
             filter: blur(0);
         }
+        
+        /* Placeholder per immagini mancanti */
+        img:not([src]):not([data-src]),
+        img[src=""],
+        img[src="#"] {
+            background: var(--light-gray);
+            position: relative;
+        }
+        
+        img:not([src]):not([data-src])::after,
+        img[src=""]::after,
+        img[src="#"]::after {
+            content: "Immagine";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
     </style>
     
     <!-- Schema.org Structured Data -->
@@ -731,7 +832,10 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-bg">
-            <img src="images/hero-studio-dentistico.jpg" alt="Studio Dentistico Fiori Castelnuovo Garfagnana">
+            <!-- Usa placeholder se non hai ancora l'immagine -->
+            <img src="https://via.placeholder.com/1920x800/0066cc/ffffff?text=Studio+Dentistico+Fiori" 
+                 alt="Studio Dentistico Fiori Castelnuovo Garfagnana">
+            <!-- Sostituisci con: <img src="images/hero-studio-dentistico.jpg" alt="Studio Dentistico Fiori Castelnuovo Garfagnana"> -->
         </div>
         <div class="container">
             <div class="hero-content">
@@ -754,7 +858,11 @@
             <div class="specializations-grid">
                 <!-- Implantologia -->
                 <div class="spec-card">
-                    <img data-src="images/sala-chirurgica-implantologia.jpg" alt="Implantologia dentale avanzata" loading="lazy">
+                    <div class="spec-card-img">
+                        <img data-src="https://via.placeholder.com/800x600/e3f2fd/0066cc?text=Implantologia" 
+                             alt="Implantologia dentale avanzata" loading="lazy">
+                        <!-- Sostituisci con: <img data-src="images/sala-chirurgica-implantologia.jpg" alt="Implantologia dentale avanzata" loading="lazy"> -->
+                    </div>
                     <div class="spec-content">
                         <h3>Implantologia</h3>
                         <p>Trent'anni di esperienza in implantologia avanzata con tecniche all'avanguardia per risultati duraturi e naturali.</p>
@@ -769,7 +877,10 @@
                 
                 <!-- Posturologia -->
                 <div class="spec-card">
-                    <img data-src="images/valutazione-postura-atleta.jpg" alt="Analisi posturale computerizzata" loading="lazy">
+                    <div class="spec-card-img">
+                        <img data-src="https://via.placeholder.com/800x600/e3f2fd/0066cc?text=Posturologia" 
+                             alt="Analisi posturale computerizzata" loading="lazy">
+                    </div>
                     <div class="spec-content">
                         <h3>Posturologia</h3>
                         <p>30 anni di esperienza nell'analisi e correzione degli squilibri posturali correlati alla masticazione.</p>
@@ -784,7 +895,10 @@
                 
                 <!-- Agopuntura -->
                 <div class="spec-card">
-                    <img data-src="images/agopuntura-medica.jpg" alt="Agopuntura medica certificata" loading="lazy">
+                    <div class="spec-card-img">
+                        <img data-src="https://via.placeholder.com/800x600/e3f2fd/0066cc?text=Agopuntura+Medica" 
+                             alt="Agopuntura medica certificata" loading="lazy">
+                    </div>
                     <div class="spec-content">
                         <h3>Agopuntura Medica</h3>
                         <p>Trattamenti di agopuntura medica certificata con formazione triennale e tirocinio ospedaliero.</p>
@@ -799,7 +913,10 @@
                 
                 <!-- Sedazione Cosciente -->
                 <div class="spec-card">
-                    <img data-src="images/sedazione-cosciente-bambino.jpg" alt="Sedazione cosciente per bambini" loading="lazy">
+                    <div class="spec-card-img">
+                        <img data-src="https://via.placeholder.com/800x600/e3f2fd/0066cc?text=Sedazione+Cosciente" 
+                             alt="Sedazione cosciente per bambini" loading="lazy">
+                    </div>
                     <div class="spec-content">
                         <h3>Sedazione Cosciente</h3>
                         <p>Trattamenti senza ansia né dolore grazie alla sedazione con protossido d'azoto, adatta a tutte le età.</p>
@@ -814,7 +931,10 @@
                 
                 <!-- Terapia Kyminasi -->
                 <div class="spec-card">
-                    <img data-src="images/terapia-kyminasi-risultati.jpg" alt="Risultati terapia Kyminasi Diet" loading="lazy">
+                    <div class="spec-card-img">
+                        <img data-src="https://via.placeholder.com/800x600/e3f2fd/0066cc?text=Terapia+Kyminasi" 
+                             alt="Risultati terapia Kyminasi Diet" loading="lazy">
+                    </div>
                     <div class="spec-content">
                         <h3>Terapia Kyminasi Diet</h3>
                         <p>Una delle sole 61 piattaforme autorizzate in Italia per questa innovativa terapia metabolica.</p>
@@ -916,8 +1036,9 @@
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 3rem;">
-                <img data-src="images/paziente-sorridente.jpg" alt="Paziente soddisfatto dopo trattamento" loading="lazy" style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: var(--shadow);">
+            <div class="image-container" style="margin-top: 3rem;">
+                <img data-src="https://via.placeholder.com/1200x600/e3f2fd/0066cc?text=Paziente+Soddisfatto" 
+                     alt="Paziente soddisfatto dopo trattamento" loading="lazy">
             </div>
         </div>
     </section>
@@ -929,7 +1050,8 @@
             <div class="team-grid">
                 <div class="team-member">
                     <div class="team-photo">
-                        <img data-src="images/dott-enrico-fiori.jpg" alt="Dott. Enrico Fiori" loading="lazy">
+                        <img data-src="https://via.placeholder.com/400x400/e3f2fd/0066cc?text=Dott.+Enrico+Fiori" 
+                             alt="Dott. Enrico Fiori" loading="lazy">
                     </div>
                     <h3>Dott. Enrico Fiori</h3>
                     <p>Medico Chirurgo, Odontoiatra</p>
@@ -943,7 +1065,8 @@
                 
                 <div class="team-member">
                     <div class="team-photo">
-                        <img data-src="images/dott-daniela-bonini.jpg" alt="Dott.ssa Daniela Bonini" loading="lazy">
+                        <img data-src="https://via.placeholder.com/400x400/e3f2fd/0066cc?text=Dott.ssa+Daniela+Bonini" 
+                             alt="Dott.ssa Daniela Bonini" loading="lazy">
                     </div>
                     <h3>Dott.ssa Daniela Bonini</h3>
                     <p>Medico Chirurgo, Odontoiatra</p>
@@ -988,8 +1111,9 @@
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 3rem;">
-                <img data-src="images/tecnologia-laser.jpg" alt="Tecnologia laser in sala operativa" loading="lazy" style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: var(--shadow);">
+            <div class="image-container" style="margin-top: 3rem;">
+                <img data-src="https://via.placeholder.com/1200x600/e3f2fd/0066cc?text=Tecnologia+Laser" 
+                     alt="Tecnologia laser in sala operativa" loading="lazy">
             </div>
         </div>
     </section>
@@ -1040,7 +1164,10 @@
                     <strong>Studio privo di barriere architettoniche</strong><br>
                     Parcheggio disponibile davanti alle piscine comunali
                 </p>
-                <img data-src="images/ingresso-studio.jpg" alt="Ingresso senza barriere Studio Dentistico Fiori" loading="lazy" style="max-width: 100%; height: auto; margin-top: 2rem; border-radius: 15px; box-shadow: var(--shadow);">
+                <div class="image-container" style="margin-top: 2rem;">
+                    <img data-src="https://via.placeholder.com/1200x600/e3f2fd/0066cc?text=Ingresso+Senza+Barriere" 
+                         alt="Ingresso senza barriere Studio Dentistico Fiori" loading="lazy">
+                </div>
             </div>
         </div>
     </section>
@@ -1065,8 +1192,9 @@
                 </iframe>
             </div>
             
-            <div style="text-align: center; margin-top: 2rem;">
-                <img data-src="images/facciata-studio.jpg" alt="Studio Dentistico Fiori esterno" loading="lazy" style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: var(--shadow);">
+            <div class="image-container" style="margin-top: 2rem;">
+                <img data-src="https://via.placeholder.com/1200x600/e3f2fd/0066cc?text=Studio+Dentistico+Fiori+Esterno" 
+                     alt="Studio Dentistico Fiori esterno" loading="lazy">
             </div>
         </div>
     </section>
