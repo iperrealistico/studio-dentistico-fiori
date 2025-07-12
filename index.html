@@ -124,6 +124,7 @@
             font-weight: 600;
             margin-bottom: 1.5rem;
             color: var(--primary-color);
+            text-align: center; /* Centra tutti i titoli h2 */
         }
         
         h3 {
@@ -242,7 +243,7 @@
             20%, 40% { transform: rotate(10deg); }
         }
         
-        /* Hero Section - UPDATED */
+        /* Hero Section - UPDATED FOR RIGHT ALIGNMENT */
         .hero {
             margin-top: 70px;
             position: relative;
@@ -278,13 +279,20 @@
             z-index: -1;
         }
         
+        .hero .container {
+            display: flex;
+            justify-content: flex-end; /* Allinea contenuto a destra */
+            align-items: center;
+            width: 100%;
+        }
+        
         .hero-content {
             position: relative;
             z-index: 1;
             color: var(--text-color);
             animation: fadeInUp 1s ease-out;
-            margin-left: auto; /* Allinea a destra */
             max-width: 600px;
+            width: 45%; /* Occupa solo parte destra */
             padding: 2rem;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -357,11 +365,6 @@
         
         section:nth-child(even) {
             background: var(--light-gray);
-        }
-
-        /* Centrare titoli specifici */
-        #team h2, #tecnologia h2, #dove-siamo h2 {
-            text-align: center;
         }
         
         /* Specializations Grid */
@@ -601,6 +604,8 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin: 2rem 0;
+            color: white !important; /* Fix per iOS */
+            -webkit-text-fill-color: white; /* Fix specifico per Safari/iOS */
         }
         
         .contact-cta {
@@ -646,6 +651,12 @@
         }
         
         /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                width: 55%;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-menu {
                 position: fixed;
@@ -675,18 +686,23 @@
             }
             
             .hero {
-                min-height: 70vh;
+                min-height: 80vh; /* Aumenta altezza su mobile */
             }
             
             /* Mobile hero adjustments */
             .hero-bg img {
-                object-position: left center; /* Allinea a sinistra per mantenere i volti */
+                object-position: 20% center; /* Mantiene i volti visibili */
+            }
+            
+            .hero .container {
+                justify-content: center; /* Centra su mobile */
+                padding-top: 250px; /* Spazio sopra per vedere l'immagine */
             }
             
             .hero-content {
-                margin: 0 auto;
+                width: 90%;
+                margin-bottom: 2rem; /* Spazio sotto per vedere l'immagine */
                 background: rgba(255, 255, 255, 0.9);
-                max-width: 90%;
             }
             
             section {
@@ -709,6 +725,18 @@
         }
         
         @media (max-width: 480px) {
+            .hero {
+                min-height: 100vh; /* Ancora più alta su mobile piccoli */
+            }
+            
+            .hero .container {
+                padding-top: 200px;
+            }
+            
+            .hero-content {
+                padding: 1.5rem;
+            }
+            
             .hero-cta {
                 padding: 1rem 2rem;
                 font-size: 1.1rem;
