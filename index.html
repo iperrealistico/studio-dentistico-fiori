@@ -15,7 +15,7 @@
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Studio Dentistico Fiori | Dentista a Castelnuovo di Garfagnana">
     <meta property="og:description" content="Dal 1960 eccellenza odontoiatrica in Garfagnana. Implantologia, posturologia, agopuntura medica. ☎️ 0583 62707">
-    <meta property="og:image" content="https://www.studiodentisticofiori.it/images/studio-dentistico-fiori-preview.jpg">
+    <meta property="og:image" content="images/studio-dentistico-fiori-preview.jpg">
     <meta property="og:url" content="https://www.studiodentisticofiori.it">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="it_IT">
@@ -24,16 +24,10 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Studio Dentistico Fiori | Dentista Castelnuovo Garfagnana">
     <meta name="twitter:description" content="65 anni di esperienza odontoiatrica. Implantologia, posturologia, agopuntura. ☎️ 0583 62707">
-    <meta name="twitter:image" content="https://www.studiodentisticofiori.it/images/studio-dentistico-fiori-preview.jpg">
+    <meta name="twitter:image" content="images/studio-dentistico-fiori-preview.jpg">
     
-    <!-- Favicon per tutti i browser -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0066cc">
-    <meta name="msapplication-TileColor" content="#0066cc">
-    <meta name="theme-color" content="#ffffff">
+    <!-- Favicon base - rimuovi se non hai il file -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🦷</text></svg>">
     
     <!-- 
     ========================================
@@ -60,18 +54,7 @@
     STRUTTURA CARTELLE:
     - Creare una cartella "images" nella stessa directory del file HTML
     - Inserire tutte le immagini dentro la cartella "images"
-    
-    FAVICON FILES (nella root):
-    - favicon.ico
-    - favicon-16x16.png
-    - favicon-32x32.png
-    - apple-touch-icon.png (180x180)
-    - safari-pinned-tab.svg
-    - site.webmanifest
-    
-    Per testare senza immagini, usa questi placeholder:
-    - https://via.placeholder.com/1920x800/0066cc/ffffff?text=Studio+Dentistico+Fiori
-    - https://via.placeholder.com/800x600/e3f2fd/0066cc?text=Specializzazione
+    - Sostituire tutti i src="data:image/svg+xml..." con src="images/nome-file.jpg"
     
     ========================================
     -->
@@ -394,6 +377,7 @@
             height: 250px;
             overflow: hidden;
             background: var(--light-gray);
+            position: relative;
         }
         
         .spec-card-img img {
@@ -406,6 +390,19 @@
         
         .spec-card:hover .spec-card-img img {
             transform: scale(1.05);
+        }
+        
+        /* Placeholder SVG per immagini */
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.2rem;
         }
         
         .spec-content {
@@ -489,6 +486,7 @@
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             background: var(--light-gray);
+            position: relative;
         }
         
         .team-photo img {
@@ -545,6 +543,8 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             background: var(--light-gray);
+            position: relative;
+            min-height: 300px;
         }
         
         .image-container img {
@@ -685,6 +685,10 @@
             .contact-number {
                 font-size: 2rem;
             }
+            
+            .image-container {
+                min-height: 200px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -708,26 +712,6 @@
         img.loaded {
             filter: blur(0);
         }
-        
-        /* Placeholder per immagini mancanti */
-        img:not([src]):not([data-src]),
-        img[src=""],
-        img[src="#"] {
-            background: var(--light-gray);
-            position: relative;
-        }
-        
-        img:not([src]):not([data-src])::after,
-        img[src=""]::after,
-        img[src="#"]::after {
-            content: "Immagine";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--medium-gray);
-            font-size: 14px;
-        }
     </style>
     
     <!-- Schema.org Structured Data -->
@@ -736,8 +720,7 @@
         "@context": "https://schema.org",
         "@type": "Dentist",
         "name": "Studio Dentistico Fiori",
-        "image": "https://www.studiodentisticofiori.it/images/facciata-studio.jpg",
-        "logo": "https://www.studiodentisticofiori.it/images/logo.png",
+        "image": "images/facciata-studio.jpg",
         "@id": "https://www.studiodentisticofiori.it",
         "url": "https://www.studiodentisticofiori.it",
         "telephone": "+390583627070",
@@ -832,10 +815,12 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-bg">
-            <!-- Usa placeholder se non hai ancora l'immagine -->
-            <img src="https://via.placeholder.com/1920x800/0066cc/ffffff?text=Studio+Dentistico+Fiori" 
-                 alt="Studio Dentistico Fiori Castelnuovo Garfagnana">
-            <!-- Sostituisci con: <img src="images/hero-studio-dentistico.jpg" alt="Studio Dentistico Fiori Castelnuovo Garfagnana"> -->
+            <!-- Placeholder SVG integrato -->
+            <svg width="100%" height="100%" viewBox="0 0 1920 800" xmlns="http://www.w3.org/2000/svg">
+                <rect width="1920" height="800" fill="#0066cc"/>
+                <text x="960" y="400" text-anchor="middle" fill="white" font-size="48" font-family="Arial, sans-serif" opacity="0.3">Studio Dentistico Fiori</text>
+            </svg>
+            <!-- Sostituisci l'SVG sopra con: <img src="images/hero-studio-dentistico.jpg" alt="Studio Dentistico Fiori Castelnuovo Garfagnana"> -->
         </div>
         <div class="container">
             <div class="hero-content">
@@ -859,9 +844,8 @@
                 <!-- Implantologia -->
                 <div class="spec-card">
                     <div class="spec-card-img">
-                        <img data-src="https://via.placeholder.com/800x600/e3f2fd/0066cc?text=Implantologia" 
-                             alt="Implantologia dentale avanzata" loading="lazy">
-                        <!-- Sostituisci con: <img data-src="images/sala-chirurgica-implantologia.jpg" alt="Implantologia dentale avanzata" loading="lazy"> -->
+                        <div class="img-placeholder">Implantologia</div>
+                        <!-- Sostituisci con: <img src="images/sala-chirurgica-implantologia.jpg" alt="Implantologia dentale avanzata"> -->
                     </div>
                     <div class="spec-content">
                         <h3>Implantologia</h3>
@@ -878,8 +862,8 @@
                 <!-- Posturologia -->
                 <div class="spec-card">
                     <div class="spec-card-img">
-                        <img data-src="https://via.placeholder.com/800x600/e3f2fd/0066cc?text=Posturologia" 
-                             alt="Analisi posturale computerizzata" loading="lazy">
+                        <div class="img-placeholder">Posturologia</div>
+                        <!-- Sostituisci con: <img src="images/valutazione-postura-atleta.jpg" alt="Analisi posturale computerizzata"> -->
                     </div>
                     <div class="spec-content">
                         <h3>Posturologia</h3>
@@ -896,8 +880,8 @@
                 <!-- Agopuntura -->
                 <div class="spec-card">
                     <div class="spec-card-img">
-                        <img data-src="https://via.placeholder.com/800x600/e3f2fd/0066cc?text=Agopuntura+Medica" 
-                             alt="Agopuntura medica certificata" loading="lazy">
+                        <div class="img-placeholder">Agopuntura Medica</div>
+                        <!-- Sostituisci con: <img src="images/agopuntura-medica.jpg" alt="Agopuntura medica certificata"> -->
                     </div>
                     <div class="spec-content">
                         <h3>Agopuntura Medica</h3>
@@ -914,8 +898,8 @@
                 <!-- Sedazione Cosciente -->
                 <div class="spec-card">
                     <div class="spec-card-img">
-                        <img data-src="https://via.placeholder.com/800x600/e3f2fd/0066cc?text=Sedazione+Cosciente" 
-                             alt="Sedazione cosciente per bambini" loading="lazy">
+                        <div class="img-placeholder">Sedazione Cosciente</div>
+                        <!-- Sostituisci con: <img src="images/sedazione-cosciente-bambino.jpg" alt="Sedazione cosciente per bambini"> -->
                     </div>
                     <div class="spec-content">
                         <h3>Sedazione Cosciente</h3>
@@ -932,8 +916,8 @@
                 <!-- Terapia Kyminasi -->
                 <div class="spec-card">
                     <div class="spec-card-img">
-                        <img data-src="https://via.placeholder.com/800x600/e3f2fd/0066cc?text=Terapia+Kyminasi" 
-                             alt="Risultati terapia Kyminasi Diet" loading="lazy">
+                        <div class="img-placeholder">Terapia Kyminasi</div>
+                        <!-- Sostituisci con: <img src="images/terapia-kyminasi-risultati.jpg" alt="Risultati terapia Kyminasi Diet"> -->
                     </div>
                     <div class="spec-content">
                         <h3>Terapia Kyminasi Diet</h3>
@@ -1037,8 +1021,8 @@
             </div>
             
             <div class="image-container" style="margin-top: 3rem;">
-                <img data-src="https://via.placeholder.com/1200x600/e3f2fd/0066cc?text=Paziente+Soddisfatto" 
-                     alt="Paziente soddisfatto dopo trattamento" loading="lazy">
+                <div class="img-placeholder">Paziente Soddisfatto</div>
+                <!-- Sostituisci con: <img src="images/paziente-sorridente.jpg" alt="Paziente soddisfatto dopo trattamento"> -->
             </div>
         </div>
     </section>
@@ -1050,8 +1034,8 @@
             <div class="team-grid">
                 <div class="team-member">
                     <div class="team-photo">
-                        <img data-src="https://via.placeholder.com/400x400/e3f2fd/0066cc?text=Dott.+Enrico+Fiori" 
-                             alt="Dott. Enrico Fiori" loading="lazy">
+                        <div class="img-placeholder" style="border-radius: 50%;">Dr. Enrico Fiori</div>
+                        <!-- Sostituisci con: <img src="images/dott-enrico-fiori.jpg" alt="Dott. Enrico Fiori"> -->
                     </div>
                     <h3>Dott. Enrico Fiori</h3>
                     <p>Medico Chirurgo, Odontoiatra</p>
@@ -1065,8 +1049,8 @@
                 
                 <div class="team-member">
                     <div class="team-photo">
-                        <img data-src="https://via.placeholder.com/400x400/e3f2fd/0066cc?text=Dott.ssa+Daniela+Bonini" 
-                             alt="Dott.ssa Daniela Bonini" loading="lazy">
+                        <div class="img-placeholder" style="border-radius: 50%;">Dr.ssa Daniela Bonini</div>
+                        <!-- Sostituisci con: <img src="images/dott-daniela-bonini.jpg" alt="Dott.ssa Daniela Bonini"> -->
                     </div>
                     <h3>Dott.ssa Daniela Bonini</h3>
                     <p>Medico Chirurgo, Odontoiatra</p>
@@ -1112,8 +1096,8 @@
             </div>
             
             <div class="image-container" style="margin-top: 3rem;">
-                <img data-src="https://via.placeholder.com/1200x600/e3f2fd/0066cc?text=Tecnologia+Laser" 
-                     alt="Tecnologia laser in sala operativa" loading="lazy">
+                <div class="img-placeholder">Tecnologia Laser</div>
+                <!-- Sostituisci con: <img src="images/tecnologia-laser.jpg" alt="Tecnologia laser in sala operativa"> -->
             </div>
         </div>
     </section>
@@ -1165,8 +1149,8 @@
                     Parcheggio disponibile davanti alle piscine comunali
                 </p>
                 <div class="image-container" style="margin-top: 2rem;">
-                    <img data-src="https://via.placeholder.com/1200x600/e3f2fd/0066cc?text=Ingresso+Senza+Barriere" 
-                         alt="Ingresso senza barriere Studio Dentistico Fiori" loading="lazy">
+                    <div class="img-placeholder">Ingresso Senza Barriere</div>
+                    <!-- Sostituisci con: <img src="images/ingresso-studio.jpg" alt="Ingresso senza barriere Studio Dentistico Fiori"> -->
                 </div>
             </div>
         </div>
@@ -1182,7 +1166,7 @@
             
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2884.1234567890123!2d10.4092!3d44.1119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sStudio+Dentistico+Fiori!5e0!3m2!1sit!2sit!4v1234567890123"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2885.6937894620924!2d10.407089315495842!3d44.11175597910724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d57a7e3e7e7e7f%3A0x0!2sVia%20Valmaira%2C%204%2C%2055032%20Castelnuovo%20di%20Garfagnana%20LU!5e0!3m2!1sit!2sit!4v1234567890123"
                     width="100%" 
                     height="100%" 
                     style="border:0;" 
@@ -1193,8 +1177,8 @@
             </div>
             
             <div class="image-container" style="margin-top: 2rem;">
-                <img data-src="https://via.placeholder.com/1200x600/e3f2fd/0066cc?text=Studio+Dentistico+Fiori+Esterno" 
-                     alt="Studio Dentistico Fiori esterno" loading="lazy">
+                <div class="img-placeholder">Studio Dentistico Fiori Esterno</div>
+                <!-- Sostituisci con: <img src="images/facciata-studio.jpg" alt="Studio Dentistico Fiori esterno"> -->
             </div>
         </div>
     </section>
@@ -1247,27 +1231,29 @@
             }
         });
         
-        // Lazy Loading Images
+        // Lazy Loading Images - Aggiornato per gestire anche i placeholder
         const images = document.querySelectorAll('img[data-src]');
         
-        const imageOptions = {
-            threshold: 0,
-            rootMargin: '0px 0px 300px 0px'
-        };
-        
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.add('loaded');
-                    img.removeAttribute('data-src');
-                    imageObserver.unobserve(img);
-                }
-            });
-        }, imageOptions);
-        
-        images.forEach(img => imageObserver.observe(img));
+        if (images.length > 0) {
+            const imageOptions = {
+                threshold: 0,
+                rootMargin: '0px 0px 300px 0px'
+            };
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.add('loaded');
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            }, imageOptions);
+            
+            images.forEach(img => imageObserver.observe(img));
+        }
         
         // Section Animation on Scroll
         const sections = document.querySelectorAll('section');
