@@ -26,8 +26,8 @@
     <meta name="twitter:description" content="65 anni di esperienza odontoiatrica. Implantologia, posturologia, agopuntura. ☎️ 0583 62707">
     <meta name="twitter:image" content="images/studio-dentistico-fiori-preview.jpg">
     
-    <!-- Favicon SVG inline - Dente stilizzato con shading realistico -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='toothGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%230066cc;stop-opacity:1'/><stop offset='100%25' style='stop-color:%2300a8e6;stop-opacity:1'/></linearGradient><radialGradient id='shine' cx='30%25' cy='30%25' r='50%25'><stop offset='0%25' style='stop-color:%23ffffff;stop-opacity:0.8'/><stop offset='100%25' style='stop-color:%23ffffff;stop-opacity:0'/></radialGradient></defs><rect width='100' height='100' rx='20' fill='url(%23toothGrad)'/><path d='M50 15c-10 0-18 8-18 18 0 5-2 10-2 20 0 15 0 22 8 27 5 3 12 5 12 5s7-2 12-5c8-5 8-12 8-27 0-10-2-15-2-20 0-10-8-18-18-18z' fill='white'/><path d='M50 15c-10 0-18 8-18 18 0 5-2 10-2 20 0 15 0 22 8 27 5 3 12 5 12 5s7-2 12-5c8-5 8-12 8-27 0-10-2-15-2-20 0-10-8-18-18-18z' fill='url(%23shine)' opacity='0.5'/><path d='M45 35c0-3 2-5 5-5s5 2 5 5v10c0 3-2 5-5 5s-5-2-5-5V35z' fill='%230066cc' opacity='0.3'/></svg>">
+    <!-- Favicon SVG inline - Dente stilizzato realistico -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='toothGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%230066cc;stop-opacity:1'/><stop offset='100%25' style='stop-color:%2300a8e6;stop-opacity:1'/></linearGradient><linearGradient id='toothLight' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%23ffffff;stop-opacity:0.6'/><stop offset='100%25' style='stop-color:%23ffffff;stop-opacity:0.1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='%23f0f8ff'/><path d='M50 10c-8 0-15 5-15 13 0 5-1 8-1 8s0 3 1 8c1 5 1 8 0 12-1 4-3 8-3 12 0 6 3 10 6 12 2 1 3 2 5 2l7 8 7-8c2 0 3-1 5-2 3-2 6-6 6-12 0-4-2-8-3-12-1-4-1-7 0-12 1-5 1-8 1-8s0-3-1-8c0-8-7-13-15-13z' fill='url(%23toothGrad)'/><path d='M50 10c-8 0-15 5-15 13 0 5-1 8-1 8s0 3 1 8c1 5 1 8 0 12-1 4-3 8-3 12 0 6 3 10 6 12 2 1 3 2 5 2l7 8 7-8c2 0 3-1 5-2 3-2 6-6 6-12 0-4-2-8-3-12-1-4-1-7 0-12 1-5 1-8 1-8s0-3-1-8c0-8-7-13-15-13z' fill='url(%23toothLight)'/><ellipse cx='50' cy='25' rx='10' ry='8' fill='%23ffffff' opacity='0.4'/></svg>">
     
     <!-- 
     ========================================
@@ -38,14 +38,15 @@
     Il sistema le adatterà automaticamente senza distorsioni.
     
     1. hero-studio-dentistico.jpg - Foto principale dello studio (consigliata almeno 1920px larghezza)
-    2. sala-chirurgica-implantologia.jpg - Sala chirurgica in azione
-    3. valutazione-postura-atleta.jpg - Analisi posturale
-    4. agopuntura-medica.jpg - Ago su punto terapeutico
-    5. sedazione-cosciente-bambino.jpg - Mascherina su paziente pediatrico
-    6. terapia-kyminasi-risultati.jpg - Prima e dopo paziente
-    7. dott-enrico-fiori.jpg - Ritratto professionale
-    8. dott-daniela-bonini.jpg - Ritratto professionale
-    9. studio-dentistico-fiori-preview.jpg - Immagine per social (1200x630)
+    2. hero-studio-dentistico-mobile.jpg - Foto hero verticale per mobile (consigliata 1080x1920px) - OPZIONALE
+    3. sala-chirurgica-implantologia.jpg - Sala chirurgica in azione
+    4. valutazione-postura-atleta.jpg - Analisi posturale
+    5. agopuntura-medica.jpg - Ago su punto terapeutico
+    6. sedazione-cosciente-bambino.jpg - Mascherina su paziente pediatrico
+    7. terapia-kyminasi-risultati.jpg - Prima e dopo paziente
+    8. dott-enrico-fiori.jpg - Ritratto professionale
+    9. dott-daniela-bonini.jpg - Ritratto professionale
+    10. studio-dentistico-fiori-preview.jpg - Immagine per social (1200x630)
     
     STRUTTURA CARTELLE:
     - Creare una cartella "images" nella stessa directory del file HTML
@@ -267,6 +268,34 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+        }
+        
+        /* Immagine mobile per aspect ratio verticali */
+        .hero-bg-mobile {
+            display: none;
+        }
+        
+        @media (orientation: portrait) and (max-width: 768px) {
+            .hero-bg-desktop {
+                display: none;
+            }
+            
+            .hero-bg-mobile {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -2;
+            }
+            
+            .hero-bg-mobile img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
         }
         
         .hero-overlay {
@@ -848,15 +877,18 @@
                                 <stop offset="0%" style="stop-color:#0066cc;stop-opacity:1" />
                                 <stop offset="100%" style="stop-color:#00a8e6;stop-opacity:1" />
                             </linearGradient>
-                            <radialGradient id="shine" cx="30%" cy="30%" r="50%">
-                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
-                                <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
-                            </radialGradient>
+                            <linearGradient id="toothLight" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.6" />
+                                <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.1" />
+                            </linearGradient>
                         </defs>
-                        <rect width="100" height="100" rx="20" fill="url(#toothGrad)"/>
-                        <path d="M50 15c-10 0-18 8-18 18 0 5-2 10-2 20 0 15 0 22 8 27 5 3 12 5 12 5s7-2 12-5c8-5 8-12 8-27 0-10-2-15-2-20 0-10-8-18-18-18z" fill="white"/>
-                        <path d="M50 15c-10 0-18 8-18 18 0 5-2 10-2 20 0 15 0 22 8 27 5 3 12 5 12 5s7-2 12-5c8-5 8-12 8-27 0-10-2-15-2-20 0-10-8-18-18-18z" fill="url(#shine)" opacity="0.5"/>
-                        <path d="M45 35c0-3 2-5 5-5s5 2 5 5v10c0 3-2 5-5 5s-5-2-5-5V35z" fill="#0066cc" opacity="0.3"/>
+                        <rect width="100" height="100" rx="20" fill="#f0f8ff"/>
+                        <!-- Dente stilizzato con corona, colletto e radici -->
+                        <path d="M50 10c-8 0-15 5-15 13 0 5-1 8-1 8s0 3 1 8c1 5 1 8 0 12-1 4-3 8-3 12 0 6 3 10 6 12 2 1 3 2 5 2l7 8 7-8c2 0 3-1 5-2 3-2 6-6 6-12 0-4-2-8-3-12-1-4-1-7 0-12 1-5 1-8 1-8s0-3-1-8c0-8-7-13-15-13z" fill="url(#toothGrad)"/>
+                        <!-- Luce sulla corona -->
+                        <path d="M50 10c-8 0-15 5-15 13 0 5-1 8-1 8s0 3 1 8c1 5 1 8 0 12-1 4-3 8-3 12 0 6 3 10 6 12 2 1 3 2 5 2l7 8 7-8c2 0 3-1 5-2 3-2 6-6 6-12 0-4-2-8-3-12-1-4-1-7 0-12 1-5 1-8 1-8s0-3-1-8c0-8-7-13-15-13z" fill="url(#toothLight)"/>
+                        <!-- Riflesso sulla corona -->
+                        <ellipse cx="50" cy="25" rx="10" ry="8" fill="#ffffff" opacity="0.4"/>
                     </svg>
                     Studio Dentistico Fiori
                 </div>
@@ -886,9 +918,18 @@
     
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-bg">
+        <!-- Desktop background -->
+        <div class="hero-bg hero-bg-desktop">
             <img src="images/hero-studio-dentistico.jpg" alt="Studio Dentistico Fiori Castelnuovo Garfagnana">
         </div>
+        
+        <!-- Mobile portrait background - fallback to desktop if not exists -->
+        <div class="hero-bg hero-bg-mobile">
+            <img src="images/hero-studio-dentistico-mobile.jpg" 
+                 onerror="this.src='images/hero-studio-dentistico.jpg'" 
+                 alt="Studio Dentistico Fiori Castelnuovo Garfagnana">
+        </div>
+        
         <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
